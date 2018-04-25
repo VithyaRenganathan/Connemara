@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Sections for <%= @book.name %> - <%= @chapter.title %> </h1>
+<table>
+  <thead>
+    <tr>
+      <th>Section #</th>
+      <th>Title</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @sections.each_with_index do |section, index| %>
+      <tr>
+        <td><%= index+1 %></td>
+        <td><%= section.title %></td>
+        <td><%= link_to 'Show', book_chapter_section_path(@book, @chapter, section) %></td>
+        <td><%= link_to 'Edit', edit_book_chapter_section_path(@book, @chapter, section) %></td>
+        <td><%= link_to 'Destroy', book_chapter_section_path(@book, @chapter, section), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Section', new_book_chapter_section_path(@book, @chapter) %>
+<%= link_to 'Back to Chapters', book_chapters_path(@book) %>
+<%= link_to 'Back to Books', books_path %>
